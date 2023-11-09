@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=500MB
+#SBATCH --mem-per-cpu=1000MB
 #SBATCH --time=0-00:30:00
 #SBATCH --job-name=reads_okopp
 #SBATCH --output=/data/users/okopp/rnaseq_course/1_quality_checks/output_reads_%j.o
