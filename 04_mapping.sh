@@ -9,7 +9,7 @@
 
 # define variables
 WORKDIR="/data/users/okopp/rnaseq_course"
-OUTDIR="$WORKDIR/2_reference_genome/mapping"
+OUTDIR="$WORKDIR/2_reference_genome/mapping/sam"
 SAMPLELIST="$WORKDIR/2_reference_genome/mapping/samplelist.tsv"
 INDEX="/data/users/okopp/rnaseq_course/2_reference_genome/reference/Mus_musculus"
 READS="/data/users/okopp/rnaseq_course/reads"
@@ -22,4 +22,4 @@ READ1="$READS/${SAMPLE}_1.fastq.gz"
 READ2="$READS/${SAMPLE}_2.fastq.gz"
 
 
-hisat2 -x $INDEX -1 $READ1 -2 $READ2 -S "$OUTDIR/${SAMPLE}_mapping.sam" -p 4
+hisat2 -x $INDEX -1 $READ1 -2 $READ2 -S "$OUTDIR/${SAMPLE}_mapping.sam" -p 4 --rna-strandness RF 
