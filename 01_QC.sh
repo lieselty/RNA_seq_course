@@ -10,6 +10,7 @@
 WORKDIR="/data/users/okopp/rnaseq_course"
 READSDIR="$WORKDIR/reads/*.fastq.gz"
 OUTDIR="$WORKDIR/1_quality_checks/fastqc"
+mkdir -p $OUTDIR
 
 ##load module 
 module add UHTS/Quality_control/fastqc/0.11.9

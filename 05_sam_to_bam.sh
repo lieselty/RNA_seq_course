@@ -12,7 +12,7 @@ WORKDIR="/data/users/okopp/rnaseq_course"
 OUTDIR="$WORKDIR/2_reference_genome/mapping/bam"
 SAMDIR="$WORKDIR/2_reference_genome/mapping/sam"
 SAMPLELIST="$WORKDIR/2_reference_genome/mapping/samplelist.tsv"
-
+mkdir -p $OUTDIR
 
 #load module
 module load UHTS/Analysis/samtools/1.10

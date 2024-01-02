@@ -13,6 +13,7 @@ OUTDIR="$WORKDIR/2_reference_genome/mapping/sam"
 SAMPLELIST="$WORKDIR/2_reference_genome/mapping/samplelist.tsv"
 INDEX="/data/users/okopp/rnaseq_course/2_reference_genome/reference/Mus_musculus"
 READS="/data/users/okopp/rnaseq_course/reads"
+mkdir -p $OUTDIR
 
 #load module
 module load UHTS/Aligner/hisat/2.2.1

@@ -8,6 +8,7 @@ WORKDIR="/data/users/okopp/rnaseq_course"
 COUNTTABLE="$WORKDIR/3_count_reads_per_gene/count_table.txt"
 OUTDIR="$WORKDIR/3_count_reads_per_gene"
 FINAL_COUNT_TABLE="final_count_table.txt"
+mkdir -p $OUTDIR
 
 # Define an array of sample names and corresponding file paths
 declare -a SAMPLES=(

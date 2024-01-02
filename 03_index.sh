@@ -8,7 +8,6 @@
 
 WORKDIR="/data/users/okopp/rnaseq_course"
 REFDIR="$WORKDIR/2_reference_genome/reference"
-OUTDIR="$WORKDIR/1_quality_checks/fastqc"
 
 module load UHTS/Aligner/hisat/2.2.1
 

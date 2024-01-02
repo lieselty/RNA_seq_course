@@ -12,6 +12,7 @@ WORKDIR="/data/users/okopp/rnaseq_course"
 BAMDIR="$WORKDIR/2_reference_genome/mapping/sorted"
 OUTDIR="$WORKDIR/3_count_reads_per_gene"
 ANNOTDIR="$WORKDIR/2_reference_genome/reference"
+mkdir -p $OUTDIR
 
 featureCounts -p -a $ANNOTDIR/Mus_musculus.GRCm39.110.gtf -o $OUTDIR/count_table.txt -s 2 -T 4 $BAMDIR/*.bam
 #try without -s
