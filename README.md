@@ -16,29 +16,24 @@ You will need to download the annotation corresponding to the reference genome y
 
 ### Differential expression analysis 
 To run the differential expression analysis, you will need another data table looking like that:
-Sample 
-tab Group
-
-
-SRR7821918
-tab Lung_WT_Case
-
-
-SRR7821919	Lung_WT_Case
-SRR7821920	Lung_WT_Case
-SRR7821921	Lung_WT_Case
-SRR7821922	Lung_WT_Case
-SRR7821937	Lung_WT_Control
-SRR7821938	Lung_WT_Control
-SRR7821939	Lung_WT_Control
-SRR7821949	Blood_WT_Case
-SRR7821950	Blood_WT_Case
-SRR7821951	Blood_WT_Case
-SRR7821952	Blood_WT_Case
-SRR7821953	Blood_WT_Case
-SRR7821968	Blood_WT_Control
-SRR7821969	Blood_WT_Control
-SRR7821970	Blood_WT_Control
+| Sample      | Group             |
+|-------------|-------------------|
+| SRR7821918  | Lung_WT_Case      |
+| SRR7821919  | Lung_WT_Case      |
+| SRR7821920  | Lung_WT_Case      |
+| SRR7821921  | Lung_WT_Case      |
+| SRR7821922  | Lung_WT_Case      |
+| SRR7821937  | Lung_WT_Control   |
+| SRR7821938  | Lung_WT_Control   |
+| SRR7821939  | Lung_WT_Control   |
+| SRR7821949  | Blood_WT_Case     |
+| SRR7821950  | Blood_WT_Case     |
+| SRR7821951  | Blood_WT_Case     |
+| SRR7821952  | Blood_WT_Case     |
+| SRR7821953  | Blood_WT_Case     |
+| SRR7821968  | Blood_WT_Control  |
+| SRR7821969  | Blood_WT_Control  |
+| SRR7821970  | Blood_WT_Control  |
 
 Then you can run the R scrip [insert official name] and you will get everything.
 
