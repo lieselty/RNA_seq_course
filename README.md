@@ -26,5 +26,5 @@ To run the differential expression analysis, you will need another data table lo
 Then you can run the R scrip [insert official name] and you will get everything.
 
 ## On this repository, you will also find:
-### all the [fastqc](fastqc) and [multiqc](fastqc/multiqc_report.html) reports 
-### a [recap from the quality of the mapping](mapping_hisat2_output.xlsx)
+### - all the [fastqc](fastqc) and [multiqc](fastqc/multiqc_report.html) reports 
+### - a [recap from the quality of the mapping](mapping_hisat2_output.xlsx)
