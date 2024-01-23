@@ -16,8 +16,14 @@ You will need to download the annotation corresponding to the reference genome y
 
 ### Differential expression analysis 
 To run the differential expression analysis, you will need another data table looking like that:
-Sample &nbsp Group\n
-SRR7821918\tLung_WT_Case\n
+Sample 
+tab Group
+
+
+SRR7821918
+tab Lung_WT_Case
+
+
 SRR7821919	Lung_WT_Case
 SRR7821920	Lung_WT_Case
 SRR7821921	Lung_WT_Case
