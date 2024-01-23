@@ -4,13 +4,14 @@
 #SBATCH --time=0-00:05:00
 #SBATCH --job-name=table_okopp
 
+## define variables
 WORKDIR="/data/users/okopp/rnaseq_course"
 COUNTTABLE="$WORKDIR/3_count_reads_per_gene/count_table.txt"
 OUTDIR="$WORKDIR/3_count_reads_per_gene"
 FINAL_COUNT_TABLE="final_count_table.txt"
 mkdir -p $OUTDIR
 
-# Define an array of sample names and corresponding file paths
+## define an array of sample names and corresponding file paths
 declare -a SAMPLES=(
     "SRR7821918"
     "SRR7821919"
@@ -30,7 +31,7 @@ declare -a SAMPLES=(
     "SRR7821970"
 )
 
-# Use awk to extract relevant columns and perform substitutions
+## use awk to extract relevant columns and perform substitutions
 awk -F'\t' 'NR > 1 {
     printf "%s\t", $1; 
     for (i = 7; i <= NF; i++) {
@@ -40,7 +41,7 @@ awk -F'\t' 'NR > 1 {
     printf "\n";
 }' "$COUNTTABLE" > "$OUTDIR/$FINAL_COUNT_TABLE"
 
-# Loop through the array and perform substitutions
+## loop through the array and perform substitutions
 for SAMPLE in "${SAMPLES[@]}"; do
     sed -i "s|/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/${SAMPLE}sorted.bam|${SAMPLE}|" "$OUTDIR/$FINAL_COUNT_TABLE"
 done

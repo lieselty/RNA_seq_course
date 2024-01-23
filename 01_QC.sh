@@ -6,14 +6,14 @@
 #SBATCH --output=/data/users/okopp/rnaseq_course/1_quality_checks/output_%j.o
 #SBATCH --error=/data/users/okopp/rnaseq_course/1_quality_checks/error_%j.o
 
-# define variables
+## define variables
 WORKDIR="/data/users/okopp/rnaseq_course"
 READSDIR="$WORKDIR/reads/*.fastq.gz"
 OUTDIR="$WORKDIR/1_quality_checks/fastqc"
 mkdir -p $OUTDIR
 
-##load module 
+## load module fastQC (version 0.11.9)
 module add UHTS/Quality_control/fastqc/0.11.9
 
-## fastqc
+## command line
 fastqc -o $OUTDIR -f $READSDIR

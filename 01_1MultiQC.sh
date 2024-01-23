@@ -6,10 +6,12 @@
 #SBATCH --output=/data/users/okopp/rnaseq_course/1_quality_checks/output_multiqc%j.o
 #SBATCH --error=/data/users/okopp/rnaseq_course/1_quality_checks/error_multiqc%j.o
 
-##load module 
+## load module MultiQC (version 1.8)
 module load UHTS/Analysis/MultiQC/1.8
 
+## define variables
 WORKDIR="/data/users/okopp/rnaseq_course"
 FASTQCDIR="$WORKDIR/1_quality_checks/fastqc"
 
+## command line
 multiqc $FASTQCDIR/*_fastqc.zip

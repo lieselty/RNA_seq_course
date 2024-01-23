@@ -6,13 +6,13 @@
 #SBATCH --output=/data/users/okopp/rnaseq_course/1_quality_checks/output_reads_%j.o
 #SBATCH --error=/data/users/okopp/rnaseq_course/1_quality_checks/error_reads_%j.o
 
-READSDIR="/data/users/okopp/rnaseq_course/reads"
 
-# Define the output file
+## Define variables
+READSDIR="/data/users/okopp/rnaseq_course/reads"
 OUTPUTDIR="/data/users/okopp/rnaseq_course/1_quality_checks/nb_reads.txt"
 
 
-# Loop through all .fastq files in the directory
+## Loop through all .fastq files in the directory
 for file in "$READSDIR"/*.fastq.gz; do
     # Count the number of 4-line groups in the file
     read_count=$(zcat "$file" | wc -l)

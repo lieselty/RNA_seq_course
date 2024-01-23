@@ -7,20 +7,19 @@
 #SBATCH --output=/data/users/okopp/rnaseq_course/2_reference_genome/output_mapping%j.o
 #SBATCH --error=/data/users/okopp/rnaseq_course/2_reference_genome/error_mapping%j.o
 
-# define variables
+## define variables
 WORKDIR="/data/users/okopp/rnaseq_course"
 OUTDIR="$WORKDIR/2_reference_genome/mapping/sam"
+mkdir -p $OUTDIR
 SAMPLELIST="$WORKDIR/2_reference_genome/mapping/samplelist.tsv"
 INDEX="/data/users/okopp/rnaseq_course/2_reference_genome/reference/Mus_musculus"
 READS="/data/users/okopp/rnaseq_course/reads"
-mkdir -p $OUTDIR
-
-#load module
-module load UHTS/Aligner/hisat/2.2.1
-
 SAMPLE=$(awk -v line=$SLURM_ARRAY_TASK_ID 'NR==line{print $1; exit}' $SAMPLELIST)
 READ1="$READS/${SAMPLE}_1.fastq.gz"
 READ2="$READS/${SAMPLE}_2.fastq.gz"
 
+#load module hisat (version 2.2.1)
+module load UHTS/Aligner/hisat/2.2.1
 
+## command line, rna-strandness has to be set as RF because pair-ends reads
 hisat2 -x $INDEX -1 $READ1 -2 $READ2 -S "$OUTDIR/${SAMPLE}_mapping.sam" -p 4 --rna-strandness RF 
