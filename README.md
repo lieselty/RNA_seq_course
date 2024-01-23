@@ -37,5 +37,5 @@ SRR7821970	Blood_WT_Control
 Then you can run the R scrip [insert official name] and you will get everything.
 
 ## On this repository, you will also find:
-### all the fastqc and multiqc reports
-### a recap from the quality of the mapping
+### all the [fastqc](fastqc) and [multiqc](multiqc_report.html) reports 
+### a [recap from the quality of the mapping](mapping_hisat2_output.xlsx)
