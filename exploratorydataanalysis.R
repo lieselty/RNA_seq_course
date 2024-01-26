@@ -36,7 +36,7 @@ dds <- DESeq(dds)
 
 #PCA to vizualise the data
 vsd <- vst(dds, blind = TRUE) #to remove the variance on the mean 
-plotPCA(vsd, intgroup = c("Group")) + ggtitle("Principal Component Analysis") + theme(plot.title = element_text(hjust = 0.5))
+plotPCA(vsd, intgroup = c("Group")) + ggtitle("PCA") + theme(plot.title = element_text(hjust = 0.5))
 
 
 ####################################
@@ -69,7 +69,7 @@ sort_blood[1:10,]
 
 
 #volcano plot to visualize DE genes
-EnhancedVolcano(DE_blood_with_gene_names,
+blood_volcano <- EnhancedVolcano(DE_blood_with_gene_names,
                 lab = DE_blood_with_gene_names$external_gene_name,
                 x = 'log2FoldChange',
                 y = 'pvalue',
@@ -81,7 +81,7 @@ EnhancedVolcano(DE_blood_with_gene_names,
 Rsad2 <-DE_blood["ENSMUSG00000020641",]
 Rsad2$log2FoldChange > 0 #False --> underexpression
 Rsad2 <- plotCounts(dds, "ENSMUSG00000020641", intgroup = c("Group"), returnData = TRUE)
-boxplot(count ~ Group , data=Rsad2, main = "Expression of Rsad2")
+boxplot(count ~ Group , data=Rsad2, main = "Expression of Rsad2") 
 
 oas1a <-DE_blood["ENSMUSG00000052776",]
 oas1a$log2FoldChange > 0 #true -- >overexpression
@@ -114,7 +114,7 @@ sort_lung[1:10,]
 
 
 #volcano plot
-EnhancedVolcano(DE_lung_with_gene_names,
+lung_volcano <- EnhancedVolcano(DE_lung_with_gene_names,
                 lab = DE_lung_with_gene_names$external_gene_name,
                 x = 'log2FoldChange',
                 y = 'pvalue',
@@ -149,13 +149,13 @@ head(go_blood)
 
 
 #barplot: count by go terms, sorted by p-value
-barplot(go_blood, showCategory = 15) + ggtitle("GO terms - Blood Case vs Blood Control")
+blood_bar <- barplot(go_blood, showCategory = 10) + ggtitle("Blood (Case vs Control): Count")
 
 #web plot: show relationship between go terms
 goplot(go_blood, showCategory = 10) + ggtitle("GO terms - Blood Case vs Blood Control")
 
 #dot plot: gene ratio
-dotplot(go_blood) + ggtitle("GO terms - Blood Case vs Blood Control")
+blood_dot <- dotplot(go_blood) + ggtitle("Blood (Case vs Control): GeneRatio")
 
 
 # # # # # # # # # # # # # # #
@@ -169,11 +169,10 @@ head(go_lung)
 
 
 #barplot: count by go terms, sorted by p-value
-barplot(go_lung, showCategory = 15) + ggtitle("GO terms - Lung Case vs Lung Control")
+lung_bar <- barplot(go_lung, showCategory = 10) + ggtitle("Lung (Case vs Control): Count")
 
 #web plot: show relationship between go terms
 goplot(go_lung, showCategory = 10) + ggtitle("GO terms - Lung Case vs Lung Control")
 
 #dotplot: gene ratio
-dotplot(go_lung) + ggtitle("GO terms - Lung Case vs Lung Control")
-
+lung_dot <- dotplot(go_lung) + ggtitle("Lung (Case vs Control): GeneRatio")
