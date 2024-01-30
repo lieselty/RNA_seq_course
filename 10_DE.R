@@ -48,12 +48,14 @@ plotPCA(vsd, intgroup = c("Group")) + ggtitle("PCA") + theme(plot.title = elemen
 # # # # # # # # # # # # # # # #
 
 results_blood <- results(dds, contrast=c("Group","Blood_WT_Case","Blood_WT_Control"))
+#filter the results by padj < 0.05
 DE_blood <- results_blood[which(results_blood$padj < 0.05),]
+#To see number of DE genes:
 summary(DE_blood)
 
 
-#add genes name from ensembl, need to specify the version of the reference used previously (in our case, version 110)
-ensembl <- useEnsembl(biomart = 'genes', dataset = 'mmusculus_gene_ensembl', version = 110)
+#add genes name from ensembl
+ensembl <- useEnsembl(biomart = 'genes', dataset = 'mmusculus_gene_ensembl', version = 110)#specify version
 ensembl_gene_ids_b <- rownames(DE_blood)
 gene_info_b <- getBM(attributes = c("ensembl_gene_id", "external_gene_name"),
                    filters = "ensembl_gene_id",
@@ -61,11 +63,6 @@ gene_info_b <- getBM(attributes = c("ensembl_gene_id", "external_gene_name"),
                    mart = ensembl)
 
 DE_blood_with_gene_names <- cbind(gene_info_b, DE_blood)
-
-
-#sort DE genes by pvalue to get the ten most DE genes
-sort_blood <- DE_blood_with_gene_names[order(DE_blood_with_gene_names$padj),]
-sort_blood[1:10,]
 
 
 #volcano plot to visualize DE genes
@@ -77,16 +74,11 @@ blood_volcano <- EnhancedVolcano(DE_blood_with_gene_names,
                 title = "DE genes - Blood Case vs Blood Control")
 
 
-#explore expression of genes from the article
-Rsad2 <-DE_blood["ENSMUSG00000020641",]
-Rsad2$log2FoldChange > 0 #False --> underexpression
-Rsad2 <- plotCounts(dds, "ENSMUSG00000020641", intgroup = c("Group"), returnData = TRUE)
-boxplot(count ~ Group , data=Rsad2, main = "Expression of Rsad2") 
-
+#explore expression of gene from the article
 oas1a <-DE_blood["ENSMUSG00000052776",]
-oas1a$log2FoldChange > 0 #true -- >overexpression
+oas1a$log2FoldChange > 0 #true -- >overexpression in blood
 oas1a <- plotCounts(dds, "ENSMUSG00000052776", intgroup = c("Group"), returnData = TRUE)
-boxplot(count ~ Group , data=oas1a, main = "Expression of oas1a")
+boxplot(count ~ Group , data=oas1a, main = "Expression of Oas1a")
 
 
 # # # # # # # # # # # # # # #
@@ -94,7 +86,9 @@ boxplot(count ~ Group , data=oas1a, main = "Expression of oas1a")
 # # # # # # # # # # # # # # #
 
 results_lung <- results(dds, contrast=c("Group","Lung_WT_Case","Lung_WT_Control"))
+#filter the results by padj < 0.05
 DE_lung <- results_lung[which(results_lung$padj < 0.05),]
+#To see the number of DE genes:
 summary(DE_lung)
 
 
@@ -108,11 +102,6 @@ gene_info_l <- getBM(attributes = c("ensembl_gene_id", "external_gene_name"),
 DE_lung_with_gene_names <- cbind(gene_info_l, DE_lung)
 
 
-#sort DE genes by pvalue to get the ten most DE genes
-sort_lung <- DE_lung_with_gene_names[order(DE_lung_with_gene_names$padj),]
-sort_lung[1:10,]
-
-
 #volcano plot
 lung_volcano <- EnhancedVolcano(DE_lung_with_gene_names,
                 lab = DE_lung_with_gene_names$external_gene_name,
@@ -122,16 +111,12 @@ lung_volcano <- EnhancedVolcano(DE_lung_with_gene_names,
                 title = "DE genes -  Lung Case vs Lung Control")
 
 
-#explore expression of genes from the article
-irf7 <-DE_lung["ENSMUSG00000025498",]
-irf7$log2FoldChange > 0 #True --> overexpression
-irf7 <- plotCounts(dds, "ENSMUSG00000025498", intgroup = c("Group"), returnData = TRUE)
-boxplot(count ~ Group , data=irf7, main = "Expression of irf7")
-
+#explore expression of gene from the article
 fcgr1 <-DE_lung["ENSMUSG00000015947",]
-fcgr1$log2FoldChange > 0 #True -- >overexpression
+fcgr1$log2FoldChange > 0 #True -- >overexpression in lung
 fcgr1 <- plotCounts(dds, "ENSMUSG00000015947", intgroup = c("Group"), returnData = TRUE)
-boxplot(count ~ Group , data=fcgr1, main = "Expression of fcgr1")
+boxplot(count ~ Group , data=fcgr1, main = "Expression of Fcgr1")
+
 
 
 ###########################
@@ -145,17 +130,17 @@ boxplot(count ~ Group , data=fcgr1, main = "Expression of fcgr1")
 go_blood <- enrichGO(gene = row.names(DE_blood_with_gene_names), universe = names(dds), 
                      OrgDb = org.Mm.eg.db, ont= "BP", keyType = "ENSEMBL")
 
-head(go_blood)
 
+#dot plot: gene ratio
+blood_dot <- dotplot(go_blood) + ggtitle("Blood (Case vs Control): GeneRatio")
 
+#other plots not used in the paper
 #barplot: count by go terms, sorted by p-value
-blood_bar <- barplot(go_blood, showCategory = 10) + ggtitle("Blood (Case vs Control): Count")
+blood_bar <- barplot(go_blood, showCategory = 10) + ggtitle("Blood (Case vs Control): P-value")
 
 #web plot: show relationship between go terms
 goplot(go_blood, showCategory = 10) + ggtitle("GO terms - Blood Case vs Blood Control")
 
-#dot plot: gene ratio
-blood_dot <- dotplot(go_blood) + ggtitle("Blood (Case vs Control): GeneRatio")
 
 
 # # # # # # # # # # # # # # #
@@ -165,14 +150,13 @@ blood_dot <- dotplot(go_blood) + ggtitle("Blood (Case vs Control): GeneRatio")
 go_lung <- enrichGO(gene = row.names(DE_lung_with_gene_names), universe = names(dds), 
                      OrgDb = org.Mm.eg.db, ont= "BP", keyType = "ENSEMBL")
 
-head(go_lung)
-
-
-#barplot: count by go terms, sorted by p-value
-lung_bar <- barplot(go_lung, showCategory = 10) + ggtitle("Lung (Case vs Control): Count")
-
-#web plot: show relationship between go terms
-goplot(go_lung, showCategory = 10) + ggtitle("GO terms - Lung Case vs Lung Control")
 
 #dotplot: gene ratio
 lung_dot <- dotplot(go_lung) + ggtitle("Lung (Case vs Control): GeneRatio")
+
+#other plots not used in the paper
+#barplot: count by go terms, sorted by p-value
+lung_bar <- barplot(go_lung, showCategory = 10) + ggtitle("Lung (Case vs Control): P-value")
+
+#web plot: show relationship between go terms
+goplot(go_lung, showCategory = 10) + ggtitle("GO terms - Lung Case vs Lung Control")

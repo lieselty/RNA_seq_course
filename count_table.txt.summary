@@ -1,0 +1,15 @@
+Status	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821918sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821919sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821920sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821921sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821922sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821937sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821938sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821939sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821949sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821950sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821951sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821952sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821953sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821968sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821969sorted.bam	/data/users/okopp/rnaseq_course/2_reference_genome/mapping/sorted/SRR7821970sorted.bam
+Assigned	29622330	29197172	29442607	32571396	30092525	36307833	34761708	37692604	22402368	16988390	24943138	17531342	16057006	20150080	12915988	16763353
+Unassigned_Unmapped	323782	250884	1148912	295828	263683	350906	401878	214860	836957	501990	695939	331195	393794	1413436	1680734	1526123
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	6953834	6830408	9587630	7649972	7308582	8414410	5548554	9101366	6941228	5216778	7729008	5382393	5154328	10258133	5238518	8193529
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	3073595	3710250	5602346	4192943	4160461	4533198	3252620	4811120	3417335	2483392	3993968	2669152	2472869	4956233	2142886	3972611
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	744389	785391	621706	916191	744168	634532	622570	632633	613672	463345	668358	556455	434258	384536	265705	324960
