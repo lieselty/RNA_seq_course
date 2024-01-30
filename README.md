@@ -28,3 +28,4 @@ Then you can run the R scrip [10_DE](10_DE.R) and you will get everything.
 ## On this repository, you will also find:
 ### - All the [fastqc](fastqc) and [multiqc](fastqc/multiqc_report.html) reports 
 ### - A [recap from the quality of the mapping](mapping_hisat2_output.xlsx)
+### - The [summary of featureCounts](count_table.txt.summary)
