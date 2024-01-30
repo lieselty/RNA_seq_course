@@ -1,5 +1,5 @@
 # DE Toxoplasma - rna-seq course
-In this repository, you will find all the code to reproduce my analysis based on the reads from Singhania *et al.* (2019).
+In this repository, you will find all the code to reproduce my analysis based on the reads from [Singhania *et al.* (2019)](https://www.nature.com/articles/s41467-019-10601-6). Only lung and blood tissues from Wild Type and Toxoplasma were used. 
 ## Steps
 ### Qualtiy check
 First use fastQC to assess the quality of the reads: [01_QC](01_QC.sh) to create the fastqc reports, and then use MultiQC to have all your fastqc in one report: [01_1MultiQC](01_1MultiQC.sh).
